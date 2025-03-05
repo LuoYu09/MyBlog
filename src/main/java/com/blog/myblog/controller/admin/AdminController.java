@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/back/admin")
 @Api(tags = "后台首页接口")
 @Slf4j
