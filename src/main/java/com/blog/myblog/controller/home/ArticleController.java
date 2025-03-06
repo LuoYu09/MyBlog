@@ -30,7 +30,7 @@ public class ArticleController {
      * @return 点赞量数量
      */
     @ApiOperation(value = "点赞增加")
-    @PutMapping("/like/{articleId}")
+    @PostMapping("/like/{articleId}")
     public Result increaseLikeCount(@PathVariable("articleId") Integer articleId) {
         return Result.success();
     }
@@ -42,7 +42,7 @@ public class ArticleController {
      * @return 访问量数量
      */
     @ApiOperation(value = "访问量数增加")
-    @PutMapping("/view/{articleId}")
+    @PostMapping("/view/{articleId}")
     public Result increaseViewCount(@PathVariable("articleId") Integer articleId) {
         return Result.success();
     }
