@@ -14,6 +14,12 @@ public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private ArticleMapper articleMapper;
 
+    /**
+     * 文章详情页显示
+     *获取文章信息，分类，标签等信息
+     * @param id 文章ID
+     * @return View
+     */
     @Override
     public Article getArticleById(Integer id) {
         return articleMapper.getArticleById(id);
