@@ -3,7 +3,7 @@ package com.blog.myblog.controller.admin;
 import com.blog.myblog.DTO.LoginDTO;
 import com.blog.myblog.DTO.RegisterDTO;
 import com.blog.myblog.VO.LoginVO;
-import com.blog.myblog.VO.UserDTO;
+import com.blog.myblog.DTO.UserDTO;
 import com.blog.myblog.entity.Article;
 import com.blog.myblog.entity.Comment;
 import com.blog.myblog.entity.User;
