@@ -8,17 +8,16 @@ import com.blog.myblog.entity.Article;
 import com.blog.myblog.entity.Comment;
 import com.blog.myblog.entity.User;
 import com.blog.myblog.result.Result;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/back/admin")
-@Api(tags = "后台首页接口")
+@Tag(name = "后台首页接口")
 @Slf4j
 public class AdminController {
     /**
@@ -27,7 +26,7 @@ public class AdminController {
      * @return
      */
     @PostMapping("/login")
-    @ApiOperation("登录接口")
+    @Operation(summary = "登录接口")
     public Result<LoginVO> login(@RequestBody LoginDTO dto){
 
         return Result.success();
@@ -39,7 +38,7 @@ public class AdminController {
      * @return
      */
     @PostMapping("/register")
-    @ApiOperation("注册接口")
+    @Operation(summary = "注册接口")
     public Result register(@RequestBody RegisterDTO dto){
         return Result.success();
     }
@@ -49,7 +48,7 @@ public class AdminController {
      * @return
      */
     @PostMapping("/logout")
-    @ApiOperation("退出登录接口")
+    @Operation(summary = "退出登录接口")
     public Result logout(){
         return Result.success();
     }
@@ -59,7 +58,7 @@ public class AdminController {
      * @return
      */
     @PostMapping("/article")
-    @ApiOperation("最近发布接口")
+    @Operation(summary = "最近发布接口")
     public Result<List<Article>> listRecentArticle(){
         return Result.success();
     }
@@ -69,7 +68,7 @@ public class AdminController {
      * @return
      */
     @PostMapping("/comment")
-    @ApiOperation("近期评论接口")
+    @Operation(summary = "近期评论接口")
     public Result<List<Comment>> listRecentComment(){
         return Result.success();
     }
@@ -79,7 +78,7 @@ public class AdminController {
      * @return
      */
     @PostMapping("/profile")
-    @ApiOperation("基本信息页面展示")
+    @Operation(summary = "基本信息页面展示")
     public Result<User> userProfileView(){
         return Result.success();
     }
@@ -90,7 +89,7 @@ public class AdminController {
      * @return
      */
     @GetMapping("/{id}")
-    @ApiOperation("根据ID查询用户数据")
+    @Operation(summary = "根据ID查询用户数据")
     public Result<User> selectById(@PathVariable Integer id){
         return Result.success();
     }
@@ -101,7 +100,7 @@ public class AdminController {
      * @return
      */
     @PutMapping()
-    @ApiOperation("修改用户数据")
+    @Operation(summary = "修改用户数据")
     public Result update(@RequestBody UserDTO dto){
         return Result.success();
     }

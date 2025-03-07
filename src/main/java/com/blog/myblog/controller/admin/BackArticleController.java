@@ -7,8 +7,7 @@ import com.blog.myblog.entity.Category;
 import com.blog.myblog.entity.Tag;
 import com.blog.myblog.result.PageResult;
 import com.blog.myblog.result.Result;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/back/article")
-@Api(tags = "后台文章操作接口")
+@io.swagger.v3.oas.annotations.tags.Tag(name = "后台文章操作接口")
 @Slf4j
 public class BackArticleController {
     /**
@@ -24,7 +23,7 @@ public class BackArticleController {
      * @return
      */
     @PostMapping("/page")
-    @ApiOperation("后台文章分页查询")
+    @Operation(summary = "后台文章分页查询")
     public Result<PageResult> pageQuery(@RequestBody PageQueryDTO dto){
         return Result.success();
     }
@@ -34,7 +33,7 @@ public class BackArticleController {
      * @return
      */
     @PostMapping("/category")
-    @ApiOperation("查询所有分类（不带文章数量）")
+    @Operation(summary = "查询所有分类（不带文章数量）")
     public Result<List<Category>> listCategory(){
         return Result.success();
     }
@@ -44,7 +43,7 @@ public class BackArticleController {
      * @return
      */
     @PostMapping("/tag")
-    @ApiOperation("查询所有标签")
+    @Operation(summary = "查询所有标签")
     public Result<List<Tag>> listTag(){
         return Result.success();
     }
@@ -55,7 +54,7 @@ public class BackArticleController {
      * @return
      */
     @PostMapping("/insert")
-    @ApiOperation("添加文章")
+    @Operation(summary = "添加文章")
     public Result add(@RequestBody ArticleDTO dto){
         return Result.success();
     }
@@ -66,7 +65,7 @@ public class BackArticleController {
      * @return
      */
     @DeleteMapping("/{id}")
-    @ApiOperation("根据ID删除文章")
+    @Operation(summary = "根据ID删除文章")
     public Result delete(@PathVariable Integer id){
         return Result.success();
     }
@@ -77,7 +76,7 @@ public class BackArticleController {
      * @return
      */
     @GetMapping("/{id}")
-    @ApiOperation("根据ID查询文章")
+    @Operation(summary = "根据ID查询文章")
     public Result<Article> selectById(@PathVariable Integer id){
         return Result.success();
     }
@@ -88,7 +87,7 @@ public class BackArticleController {
      * @return
      */
     @PutMapping
-    @ApiOperation("编辑文章")
+    @Operation(summary = "编辑文章")
     public Result updateArticle(@RequestBody ArticleDTO dto){
         return Result.success();
     }
