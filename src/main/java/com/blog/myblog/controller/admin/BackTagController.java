@@ -3,8 +3,7 @@ package com.blog.myblog.controller.admin;
 import com.blog.myblog.DTO.TagDTO;
 import com.blog.myblog.entity.Tag;
 import com.blog.myblog.result.Result;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/back/tag")
-@Api(tags = "标签接口")
+@io.swagger.v3.oas.annotations.tags.Tag(name = "标签接口")
 @Slf4j
 public class BackTagController {
     /**
@@ -20,7 +19,7 @@ public class BackTagController {
      * @return
      */
     @PostMapping("/list")
-    @ApiOperation("查询所有标签（带文章数量）")
+    @Operation(summary = "查询所有标签（带文章数量）")
     public Result<List<Tag>> listTagWithCount(){
         return Result.success();
     }
@@ -31,7 +30,7 @@ public class BackTagController {
      * @return
      */
     @PostMapping("/insert")
-    @ApiOperation("添加标签")
+    @Operation(summary = "添加标签")
     public Result add(@RequestBody TagDTO dto){
         return Result.success();
     }
@@ -42,7 +41,7 @@ public class BackTagController {
      * @return
      */
     @DeleteMapping("/{id}")
-    @ApiOperation("根据ID删除标签")
+    @Operation(summary = "根据ID删除标签")
     public Result delete(@PathVariable Integer id){
         return Result.success();
     }
@@ -53,7 +52,7 @@ public class BackTagController {
      * @return
      */
     @GetMapping("/{id}")
-    @ApiOperation("根据ID查询分类")
+    @Operation(summary = "根据ID查询分类")
     public Result<Tag> selectById(@PathVariable Integer id){
         return Result.success();
     }
@@ -64,7 +63,7 @@ public class BackTagController {
      * @return
      */
     @PutMapping
-    @ApiOperation("修改分类")
+    @Operation(summary = "修改分类")
     public Result update(@RequestBody TagDTO dto){
         return Result.success();
     }
