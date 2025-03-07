@@ -26,7 +26,11 @@ public class ArticleController {
     @Operation(summary = "文章详情页显示",description = "通过articleId获取文章信息，分类，标签等信息")
     @GetMapping(value = "/{articleId}")
     public Result article(@PathVariable("articleId") Integer articleId) {
+        log.info("显示第{}篇文章",articleId);
         Article article = articleService.getArticleById(articleId);
+        if (article==null){
+            return Result.error("文章不存在");
+        }
         return Result.success(article);
     }
 
@@ -39,6 +43,8 @@ public class ArticleController {
     @Operation(summary = "文章的点赞增加",description = "通过articleId文章的点赞增加")
     @PostMapping("/like/{articleId}")
     public Result increaseLikeCount(@PathVariable("articleId") Integer articleId) {
+        log.info("第{}篇文章点赞",articleId);
+        articleService.increaseLikeCount(articleId);
         return Result.success();
     }
 
@@ -51,6 +57,8 @@ public class ArticleController {
     @Operation(summary = "文章访问量数增加",description = "通过articleId文章访问量数增加")
     @PostMapping("/view/{articleId}")
     public Result increaseViewCount(@PathVariable("articleId") Integer articleId) {
+        log.info("第{}篇文章访问量增加",articleId);
+        articleService.increaseViewCount(articleId);
         return Result.success();
     }
 

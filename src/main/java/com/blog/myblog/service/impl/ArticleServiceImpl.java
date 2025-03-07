@@ -7,6 +7,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Slf4j
 public class ArticleServiceImpl implements ArticleService {
@@ -23,5 +25,30 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public Article getArticleById(Integer id) {
         return articleMapper.getArticleById(id);
+    }
+    /**
+     * 文章的点赞增加
+     *
+     * @param id 文章ID
+     * @return 点赞量数量
+     */
+    @Override
+    public void increaseLikeCount(Integer id) {
+        articleMapper.increaseLikeCount(id);
+    }
+    /**
+     * 文章的访问量增加
+     *
+     * @param id 文章ID
+     * @return 点赞量数量
+     */
+    @Override
+    public void increaseViewCount(Integer id) {
+        articleMapper.increaseViewCount(id);
+    }
+
+    @Override
+    public List<Article> getArticlesByCateIdList(List<Integer> cateIdList) {
+        return articleMapper.getArticlesByCateIdList(cateIdList);
     }
 }

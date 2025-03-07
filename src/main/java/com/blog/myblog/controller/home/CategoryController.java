@@ -1,10 +1,16 @@
 package com.blog.myblog.controller.home;
 
+import com.blog.myblog.entity.Article;
 import com.blog.myblog.result.Result;
+import com.blog.myblog.service.ArticleService;
+import com.blog.myblog.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/category")
@@ -14,6 +20,11 @@ import org.springframework.web.bind.annotation.*;
  * 文章分类目录的controller
  */
 public class CategoryController {
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private ArticleService articleService;
     /**
      * 根据分类查询文章
      *
@@ -25,7 +36,9 @@ public class CategoryController {
     public Result getArticlesByCateId(@PathVariable("cateId") Integer cateId,
                                     @RequestParam(value = "pageNum", defaultValue = "1") Integer pageIndex,
                                     @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize) {
-        return Result.success();
+    List<Integer> cateIdList=categoryService.getArticleIdByCateId(cateId);
+    List<Article> articleList=articleService.getArticlesByCateIdList(cateIdList);
+        return Result.success(articleList);
     }
 
 
