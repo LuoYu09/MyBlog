@@ -1,54 +1,38 @@
 package com.blog.myblog.config;
 
-import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import lombok.extern.slf4j.Slf4j;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
 
 @Configuration
 @Slf4j
-public class WebMvcConfiguration extends WebMvcConfigurationSupport {
+public class WebMvcConfiguration implements WebMvcConfigurer { // 改为实现接口，避免覆盖默认配置
+
     /**
-     * 生成接口文档
-     * @return
+     * 配置 OpenAPI 文档信息
      */
     @Bean
-    public Docket docket1(){
-        log.info("准备生成后台端接口文档...");
-
-        ApiInfo apiInfo = new ApiInfoBuilder()
-                .title("MyBlog后台端接口文档")
-                .version("1.0.0")
-                .description("MyBlog后台端接口文档")
-                .build();
-
-        Docket docket = new Docket(DocumentationType.SWAGGER_2)
-                .apiInfo(apiInfo)
-                .groupName("后台端接口")
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.blog.myblog.controller.admin"))
-                .paths(PathSelectors.any())
-                .build();
-
-        return docket;
+    public OpenAPI customOpenAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("MyBlog 接口文档")
+                        .version("1.0.0")
+                        .description("MyBlog 后台端接口文档"));
     }
 
     /**
-     * 设置静态资源映射
-     * @param registry
+     * 分组配置（后台端接口）
      */
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        log.info("开始设置静态资源映射...");
-        registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
+    @Bean
+    public GroupedOpenApi adminApi() {
+        log.info("准备生成后台端接口文档...");
+        return GroupedOpenApi.builder()
+                .group("后台端接口")
+                .packagesToScan("com.blog.myblog.controller") // 指定扫描的包
+                .build();
     }
-
 }

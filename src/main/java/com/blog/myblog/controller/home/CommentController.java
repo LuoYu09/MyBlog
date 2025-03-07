@@ -2,18 +2,17 @@ package com.blog.myblog.controller.home;
 
 import com.blog.myblog.entity.Comment;
 import com.blog.myblog.result.Result;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@Api(tags = "评论相关接口")
+@Tag(name= "评论相关接口")
 public class CommentController {
     /**
      * 添加评论
@@ -22,7 +21,7 @@ public class CommentController {
      * @param comment
      */
     @PutMapping("/comment")
-    @ApiOperation(value = "添加评论")
+    @Operation(summary = "添加评论", description = "添加评论")
     public Result insertComment(HttpServletRequest request, Comment comment, HttpSession session) {
         return Result.success();
     }
