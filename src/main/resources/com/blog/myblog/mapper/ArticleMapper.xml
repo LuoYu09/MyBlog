@@ -14,6 +14,7 @@
             #{cateId}
         </foreach>
         limit #{startIndex},#{pageSize}
+        order by article_view_count desc
     </select>
 
     <update id="increaseLikeCount">
