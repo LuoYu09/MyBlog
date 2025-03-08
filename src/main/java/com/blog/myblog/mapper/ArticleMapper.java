@@ -19,5 +19,5 @@ public interface ArticleMapper {
 
     void increaseViewCount(Integer id);
 
-    List<Article> getArticlesByCateIdList(List<Integer> cateIdList);
+    List<Article> getArticlesByCateIdList(List<Integer> cateIdList,Integer startIndex, Integer pageSize);
 }

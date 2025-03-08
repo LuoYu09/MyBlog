@@ -9,10 +9,11 @@
     </select>
 
     <select id="getArticlesByCateIdList" resultType="com.blog.myblog.entity.Article">
-        select * from article where article_id in
+        select article_title,article_view_count,article_comment_count,article_like_count from article where article_id in
         <foreach collection="cateIdList" item="cateId" open="(" separator="," close=")">
             #{cateId}
         </foreach>
+        limit #{startIndex},#{pageSize}
     </select>
 
     <update id="increaseLikeCount">

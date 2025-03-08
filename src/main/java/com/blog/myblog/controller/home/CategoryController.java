@@ -36,8 +36,9 @@ public class CategoryController {
     public Result getArticlesByCateId(@PathVariable("cateId") Integer cateId,
                                     @RequestParam(value = "pageNum", defaultValue = "1") Integer pageIndex,
                                     @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize) {
+        Integer startIndex = (pageIndex - 1) * pageSize;
     List<Integer> cateIdList=categoryService.getArticleIdByCateId(cateId);
-    List<Article> articleList=articleService.getArticlesByCateIdList(cateIdList);
+    List<Article> articleList=articleService.getArticlesByCateIdList(cateIdList,startIndex,pageSize);
         return Result.success(articleList);
     }
 

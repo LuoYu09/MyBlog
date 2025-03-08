@@ -48,7 +48,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> getArticlesByCateIdList(List<Integer> cateIdList) {
-        return articleMapper.getArticlesByCateIdList(cateIdList);
+    public List<Article> getArticlesByCateIdList(List<Integer> cateIdList,Integer startIndex, Integer pageSize) {
+        return articleMapper.getArticlesByCateIdList(cateIdList,startIndex,pageSize);
     }
 }
