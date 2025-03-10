@@ -1,6 +1,7 @@
 package com.blog.myblog.controller.home;
 
 import com.blog.myblog.VO.ArticleDetailVO;
+import com.blog.myblog.entity.Article;
 import com.blog.myblog.result.Result;
 import com.blog.myblog.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
@@ -22,15 +23,15 @@ public class ArticleController {
      * @return View
      */
     @GetMapping(value = "/{articleId}")
-    public Result<ArticleDetailVO> article(@PathVariable("articleId") Integer articleId) {
+    public Result<Article> article(@PathVariable("articleId") Integer articleId) {
         log.info("显示第{}篇文章",articleId);
-        ArticleDetailVO articleDetailVO = new ArticleDetailVO();
+        Article article = articleService.getArticleById(articleId);
                 //获取文章信息
-        articleDetailVO.setArticle(articleService.getArticleById(articleId));
-        if (articleDetailVO.getArticle()==null){
+
+        if (article==null){
             return Result.error("文章不存在");
         }
-        return Result.success(articleDetailVO);
+        return Result.success(article);
     }
 
     /**
