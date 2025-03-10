@@ -1,7 +1,6 @@
 package com.blog.myblog.controller.home;
 
 import com.blog.myblog.VO.ArticleDetailVO;
-import com.blog.myblog.entity.Article;
 import com.blog.myblog.result.Result;
 import com.blog.myblog.service.ArticleService;
 import com.blog.myblog.service.CommentService;

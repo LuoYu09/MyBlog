@@ -2,7 +2,6 @@ package com.blog.myblog.VO;
 
 import com.blog.myblog.entity.Article;
 import com.blog.myblog.entity.Comment;
-import com.blog.myblog.entity.Tag;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,9 +19,6 @@ public class ArticleDetailVO {
 
     @Schema(name = "评论信息")
     private List<Comment> comment;
-
-    @Schema(name = "标签信息")
-    private List<Tag> tag;
 
     @Schema(name = "相似文章")
     private List<Article> similarArticles;

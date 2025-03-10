@@ -5,11 +5,8 @@ import com.blog.myblog.DTO.RegisterDTO;
 import com.blog.myblog.VO.LoginVO;
 import com.blog.myblog.DTO.UserDTO;
 import com.blog.myblog.entity.Article;
-import com.blog.myblog.entity.Comment;
 import com.blog.myblog.entity.User;
 import com.blog.myblog.result.Result;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
