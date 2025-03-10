@@ -7,7 +7,9 @@ import com.blog.myblog.DTO.UserDTO;
 import com.blog.myblog.entity.Article;
 import com.blog.myblog.entity.User;
 import com.blog.myblog.result.Result;
+import com.blog.myblog.service.AdminService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +21,9 @@ import java.util.List;
 @RequestMapping("/back/admin")
 @Slf4j
 public class AdminController {
+    @Autowired
+    private AdminService adminService;
+
     /**
      * 登录接口
      * @param dto
@@ -26,8 +31,11 @@ public class AdminController {
      */
     @PostMapping("/login")
     public Result<LoginVO> login(@RequestBody LoginDTO dto){
+        log.info("用户登录：{}",dto);
 
-        return Result.success();
+        LoginVO result = adminService.login(dto);
+
+        return Result.success(result);
     }
 
     /**

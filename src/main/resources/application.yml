@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/forest_blog?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
     username: root
-    password: 123456
+    password: LYX1217java
 
 mybatis:
   #mapper配置文件
@@ -26,3 +26,12 @@ logging:
           mapper: debug
           service: info
           controller: info
+
+myblog:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: myblog
+    # 设置jwt过期时间
+    admin-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token

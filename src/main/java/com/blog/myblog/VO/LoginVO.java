@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LoginVO {
     //主键值
-    private Long id;
+    private Integer id;
 
     //用户名
     private String userName;
