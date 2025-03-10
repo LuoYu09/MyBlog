@@ -3,21 +3,16 @@ package com.blog.myblog.entity;
 
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Data
 public class ArticleCategoryRef implements Serializable {
+    @Serial
     private static final long serialVersionUID = -6809206515467725995L;
 
-    private Integer articleId;
+    private Integer articleId;   //文章ID
 
-    private Integer categoryId;
+    private Integer categoryId;  //分类ID
 
-    public ArticleCategoryRef() {
-    }
-
-    public ArticleCategoryRef(Integer articleId, Integer categoryId) {
-        this.articleId = articleId;
-        this.categoryId = categoryId;
-    }
 }
