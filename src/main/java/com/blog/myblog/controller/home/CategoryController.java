@@ -29,7 +29,7 @@ public class CategoryController {
      * @return 模板
      */
     @GetMapping("/{cateId}")
-    public Result getArticlesByCateId(@PathVariable("cateId") Integer cateId,
+    public Result<List<Article>> getArticlesByCateId(@PathVariable("cateId") Integer cateId,
                                     @RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
                                     @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize) {
         Integer startIndex = (pageIndex - 1) * pageSize;

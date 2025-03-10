@@ -3,7 +3,6 @@ package com.blog.myblog.controller.home;
 import com.blog.myblog.VO.ArticleDetailVO;
 import com.blog.myblog.result.Result;
 import com.blog.myblog.service.ArticleService;
-import com.blog.myblog.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +22,10 @@ public class ArticleController {
      * @return View
      */
     @GetMapping(value = "/{articleId}")
-    public Result article(@PathVariable("articleId") Integer articleId) {
+    public Result<ArticleDetailVO> article(@PathVariable("articleId") Integer articleId) {
         log.info("显示第{}篇文章",articleId);
         ArticleDetailVO articleDetailVO = new ArticleDetailVO();
-        //获取文章信息
+                //获取文章信息
         articleDetailVO.setArticle(articleService.getArticleById(articleId));
         if (articleDetailVO.getArticle()==null){
             return Result.error("文章不存在");
