@@ -6,43 +6,46 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * 文章数据模型
+ */
 @Data
 public class Article implements Serializable {
 
     private static final long serialVersionUID = 5207865247400761539L;
 
-    private Integer articleId;
+    private Integer articleId;   //文章ID
 
-    private Integer articleUserId;
+    private Integer articleUserId;  //文章对应用户ID
 
-    private String articleTitle;
+    private String articleTitle;  //文章标题
 
-    private Integer articleViewCount;
+    private Integer articleViewCount;   //文章访问量
 
-    private Integer articleCommentCount;
+    private Integer articleCommentCount;  //文章评论数量
 
-    private Integer articleLikeCount;
+    private Integer articleLikeCount;   //文章点赞数
 
-    private Date articleCreateTime;
+    private Date articleCreateTime;  //文章发布时间
 
-    private Date articleUpdateTime;
+    private Date articleUpdateTime;  //最新修改时间
 
-    private Integer articleIsComment;
+    private Integer articleIsComment;  //是否允许评论，1允许，0不允许
 
-    private Integer articleStatus;
+    private Integer articleStatus;  //文章状态，1已发布，0草稿（未发布）
 
-    private Integer articleOrder;
+    //private Integer articleOrder;
 
-    private String articleContent;
+    private String articleContent;  //内容
 
-    private String articleSummary;
+    private String articleSummary;  //摘要
 
-    private String articleThumbnail;
+    private String articleThumbnail;  //封面图片
 
-    private User user;
+    private User user;  //文章对应用户
 
-    private List<Tag> tagList;
+    //private List<Tag> tagList;
 
-    private List<Category> categoryList;
+    private List<Category> categoryList;  //文章分类
 
 }

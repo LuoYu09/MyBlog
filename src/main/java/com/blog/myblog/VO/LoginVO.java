@@ -6,21 +6,23 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 用户登录返回的数据格式
+ */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Schema(description = "用户登录返回的数据格式")
 public class LoginVO {
-    @Schema(name = "主键值")
+    //主键值
     private Long id;
 
-    @Schema(name = "用户名")
+    //用户名
     private String userName;
 
-    @Schema(name = "头像")
+    //头像
     private String avatar;
 
-    @Schema(name = "jwt令牌")
+    //jwt令牌
     private String token;
 }

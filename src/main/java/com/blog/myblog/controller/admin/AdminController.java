@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * 后台首页接口
+ */
 @RestController
 @RequestMapping("/back/admin")
-@Tag(name = "后台首页接口")
 @Slf4j
 public class AdminController {
     /**
@@ -26,7 +28,6 @@ public class AdminController {
      * @return
      */
     @PostMapping("/login")
-    @Operation(summary = "登录接口")
     public Result<LoginVO> login(@RequestBody LoginDTO dto){
 
         return Result.success();
@@ -38,7 +39,6 @@ public class AdminController {
      * @return
      */
     @PostMapping("/register")
-    @Operation(summary = "注册接口")
     public Result register(@RequestBody RegisterDTO dto){
         return Result.success();
     }
@@ -48,7 +48,6 @@ public class AdminController {
      * @return
      */
     @PostMapping("/logout")
-    @Operation(summary = "退出登录接口")
     public Result logout(){
         return Result.success();
     }
@@ -58,18 +57,7 @@ public class AdminController {
      * @return
      */
     @PostMapping("/article")
-    @Operation(summary = "最近发布接口")
     public Result<List<Article>> listRecentArticle(){
-        return Result.success();
-    }
-
-    /**
-     * 获取近期评论
-     * @return
-     */
-    @PostMapping("/comment")
-    @Operation(summary = "近期评论接口")
-    public Result<List<Comment>> listRecentComment(){
         return Result.success();
     }
 
@@ -78,7 +66,6 @@ public class AdminController {
      * @return
      */
     @PostMapping("/profile")
-    @Operation(summary = "基本信息页面展示")
     public Result<User> userProfileView(){
         return Result.success();
     }
@@ -89,7 +76,6 @@ public class AdminController {
      * @return
      */
     @GetMapping("/{id}")
-    @Operation(summary = "根据ID查询用户数据")
     public Result<User> selectById(@PathVariable Integer id){
         return Result.success();
     }
@@ -100,7 +86,6 @@ public class AdminController {
      * @return
      */
     @PutMapping()
-    @Operation(summary = "修改用户数据")
     public Result update(@RequestBody UserDTO dto){
         return Result.success();
     }

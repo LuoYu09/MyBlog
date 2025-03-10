@@ -21,8 +21,6 @@ public class Category implements Serializable {
 
     private String categoryDescription;
 
-    private Integer categoryOrder;
-
     private String categoryIcon;
 
     /**

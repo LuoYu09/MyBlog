@@ -5,13 +5,12 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+//用户登录请求数据模型
 @Data
-@Schema(name = "用户登录时传递的数据模型")
 public class LoginDTO implements Serializable {
-
-    @Schema(name = "用户名")
+    //用户名
     private String username;
 
-    @Schema(name = "密码")
+    //密码
     private String password;
 }

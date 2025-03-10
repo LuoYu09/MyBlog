@@ -5,14 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 前端传递分页查询数据模型
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Schema(name = "前端传递分页查询数据模型")
 public class PageQueryDTO {
-    @Schema(name = "第几页")
+    //第几页
     private Integer page;
 
-    @Schema(name = "每页展示条数")
+    //每页展示条数
     private Integer pageSize;
 }
