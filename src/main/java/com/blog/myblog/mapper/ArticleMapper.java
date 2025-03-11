@@ -2,7 +2,6 @@ package com.blog.myblog.mapper;
 
 import com.blog.myblog.entity.Article;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -27,7 +26,4 @@ public interface ArticleMapper {
     Integer getUserArticleCount(Integer userId);
 
     List<Article> searchArticles(Integer userId, String keyword, Integer startIndex, Integer pageSize);
-
-    @Select("select * from article order by article_create_time limit #{limit}")
-    List<Article> listRecentArticle(Integer limit);
 }
