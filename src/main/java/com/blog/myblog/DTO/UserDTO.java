@@ -30,7 +30,4 @@ public class UserDTO implements Serializable {
 
     //头像
     private String userAvatar;
-
-    //状态
-    private Integer userStatus;
 }

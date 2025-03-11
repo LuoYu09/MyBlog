@@ -10,8 +10,11 @@ public class ArticleDTO {
     //文章ID
     private Integer articleId;
 
-   //文章标题
+    //文章标题
     private String articleTitle;
+
+    //摘要
+    private String articleSummary;
 
     //文章内容
     private String articleContent;
@@ -22,11 +25,9 @@ public class ArticleDTO {
     //文章二级分类
     private Integer articleChildCategoryId;
 
-    //private Integer articleOrder;
-
     //文章状态
     private Integer articleStatus;
 
-    //文章略缩图
+    //文章封面图
     private String articleThumbnail;
 }

@@ -45,6 +45,10 @@ public class AdminController {
      */
     @PostMapping("/register")
     public Result register(@RequestBody RegisterDTO dto){
+        log.info("注册接口:{}",dto);
+
+        adminService.register(dto);
+
         return Result.success();
     }
 
@@ -63,7 +67,11 @@ public class AdminController {
      */
     @PostMapping("/article")
     public Result<List<Article>> listRecentArticle(){
-        return Result.success();
+        log.info("获取最近五篇发布");
+
+        List<Article> result = adminService.listRecentArticle();
+
+        return Result.success(result);
     }
 
     /**
@@ -72,7 +80,11 @@ public class AdminController {
      */
     @PostMapping("/profile")
     public Result<User> userProfileView(){
-        return Result.success();
+        log.info("查询用户信息");
+
+        User user = adminService.userProfileView();
+
+        return Result.success(user);
     }
 
     /**
@@ -92,6 +104,10 @@ public class AdminController {
      */
     @PutMapping()
     public Result update(@RequestBody UserDTO dto){
+        log.info("修改用户数据:{}",dto);
+
+        adminService.update(dto);
+
         return Result.success();
     }
 }
