@@ -4,9 +4,12 @@ import com.blog.myblog.DTO.ArticleDTO;
 import com.blog.myblog.DTO.PageQueryDTO;
 import com.blog.myblog.entity.Article;
 import com.blog.myblog.entity.Category;
+import com.blog.myblog.mapper.CategoryMapper;
 import com.blog.myblog.result.PageResult;
 import com.blog.myblog.result.Result;
+import com.blog.myblog.service.BackArticleService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,13 +21,20 @@ import java.util.List;
 @RequestMapping("/back/article")
 @Slf4j
 public class BackArticleController {
+    @Autowired
+    private BackArticleService backArticleService;
+
     /**
      * 后台文章分页查询
      * @return
      */
     @PostMapping("/page")
     public Result<PageResult> pageQuery(@RequestBody PageQueryDTO dto){
-        return Result.success();
+        log.info("后台文章分页查询:{}",dto);
+
+        PageResult result = backArticleService.pageQuery(dto);
+
+        return Result.success(result);
     }
 
     /**
@@ -33,7 +43,11 @@ public class BackArticleController {
      */
     @PostMapping("/category")
     public Result<List<Category>> listCategory(){
-        return Result.success();
+        log.info("查询所有分类（不带文章数量）");
+
+        List<Category> list = backArticleService.listCategory();
+
+        return Result.success(list);
     }
 
     /**
@@ -43,6 +57,10 @@ public class BackArticleController {
      */
     @PostMapping("/insert")
     public Result add(@RequestBody ArticleDTO dto){
+        log.info("添加文章:{}",dto.getArticleTitle());
+
+        backArticleService.add(dto);
+
         return Result.success();
     }
 

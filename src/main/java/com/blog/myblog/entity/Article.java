@@ -26,7 +26,7 @@ public class Article implements Serializable {
 
     private Integer articleLikeCount;   //文章点赞数
 
-    private Date articleCreateTime;  //文章发布时间
+    private Date articleCreateTime;  //文章创建时间
 
     private Date articleUpdateTime;  //最新修改时间
 

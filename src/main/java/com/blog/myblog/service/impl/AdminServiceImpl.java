@@ -93,7 +93,7 @@ public class AdminServiceImpl  implements AdminService {
      */
     @Override
     public User userProfileView() {
-        return adminMapper.selectUser();
+        return adminMapper.selectUser(BaseContext.getCurrentId());
     }
 
     /**

@@ -20,8 +20,8 @@ public interface AdminMapper {
             "(#{userName},#{password},#{Nickname},#{email},NOW(),NOW())")
     void register(RegisterDTO dto);
 
-    @Select("select * from user")
-    User selectUser();
+    @Select("select * from user where user_id = #{id}")
+    User selectUser(Integer id);
 
     void update(User user);
 }
