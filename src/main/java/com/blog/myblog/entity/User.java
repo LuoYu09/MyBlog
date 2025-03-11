@@ -1,8 +1,10 @@
 package com.blog.myblog.entity;
 
 import lombok.Data;
+import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -23,18 +25,9 @@ public class User implements Serializable{
 
     private String userAvatar;
 
-    private String userLastLoginIp;
+    private LocalDateTime userRegisterTime;
 
-    private Date userRegisterTime;
-
-    private Date userLastLoginTime;
-
-    private Integer userStatus;
-
-    /**
-     * 用户角色：admin/user
-     */
-    private String userRole;
+    private LocalDateTime userLastLoginTime;
 
     /**
      * 文章数量（不是数据库字段）

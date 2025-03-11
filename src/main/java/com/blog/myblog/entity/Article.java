@@ -34,17 +34,11 @@ public class Article implements Serializable {
 
     private Integer articleStatus;  //文章状态，1已发布，0草稿（未发布）
 
-    //private Integer articleOrder;
-
     private String articleContent;  //内容
 
     private String articleSummary;  //摘要
 
     private String articleThumbnail;  //封面图片
-
-    private User user;  //文章对应用户
-
-    //private List<Tag> tagList;
 
     private List<Category> categoryList;  //文章分类
 
