@@ -61,14 +61,14 @@ public class ArticleController {
     /**
      * 获取当前用户的总文章数
      *
-     * @param userId 用户ID
+     *
      * @return 用户文章数量
      *
      */
-    @GetMapping("/userArticleCount/{userId}")
-    public Result<Integer> getUserArticleCount(@PathVariable("userId") Integer userId) {
-        log.info("获取用户{}的文章数量",userId);
-        Integer articleCount = articleService.getUserArticleCount(userId);
+    @GetMapping("/userArticleCount")
+    public Result<Integer> getUserArticleCount() {
+        log.info("获取用户的文章数量");
+        Integer articleCount = articleService.getUserArticleCount();
         return Result.success(articleCount);
     }
 }

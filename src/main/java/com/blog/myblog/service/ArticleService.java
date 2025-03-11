@@ -14,9 +14,9 @@ public interface ArticleService {
 
     List<Article> getArticlesByCateIdList(List<Integer> cateIdList,Integer startIndex,Integer pageSize);
 
-    List<Article> getArticlesByUserId(Integer userId, Integer startIndex, Integer pageSize);
+    List<Article> getArticlesByUserId(Integer startIndex, Integer pageSize);
 
-    Integer getUserArticleCount(Integer userId);
+    Integer getUserArticleCount();
 
-    List<Article> searchArticles(Integer userId, String keyword, Integer startIndex, Integer pageSize);
+    List<Article> searchArticles(String keyword, Integer startIndex, Integer pageSize);
 }

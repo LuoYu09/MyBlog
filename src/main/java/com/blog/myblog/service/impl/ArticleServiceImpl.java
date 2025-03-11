@@ -53,17 +53,17 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> getArticlesByUserId(Integer userId, Integer startIndex, Integer pageSize) {
-        return articleMapper.getArticlesByUserId(userId,startIndex,pageSize);
+    public List<Article> getArticlesByUserId(Integer startIndex, Integer pageSize) {
+        return articleMapper.getArticlesByUserId(startIndex,pageSize);
     }
 
     @Override
-    public Integer getUserArticleCount(Integer userId) {
-        return articleMapper.getUserArticleCount(userId);
+    public Integer getUserArticleCount() {
+        return articleMapper.getUserArticleCount();
     }
 
     @Override
-    public List<Article> searchArticles(Integer userId, String keyword, Integer startIndex, Integer pageSize) {
-        return articleMapper.searchArticles(userId,keyword,startIndex,pageSize);
+    public List<Article> searchArticles(String keyword, Integer startIndex, Integer pageSize) {
+        return articleMapper.searchArticles(keyword,startIndex,pageSize);
     }
 }

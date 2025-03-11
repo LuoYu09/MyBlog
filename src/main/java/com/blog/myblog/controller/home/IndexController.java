@@ -35,12 +35,12 @@ public class IndexController {
      * 和页数索引和数据展示量
      * 获取文章
      */
-    @GetMapping("/getPage/{userId}")
-    public Result<List<Article>> getPageByIndex(@PathVariable("userId") Integer userId,
+    @GetMapping("/getPage")
+    public Result<List<Article>> getPageByIndex(
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageIndex,
                                                 @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
         Integer startIndex = (pageIndex - 1) * pageSize;
-        return Result.success(articleService.getArticlesByUserId(userId, startIndex, pageSize));
+        return Result.success(articleService.getArticlesByUserId(startIndex, pageSize));
     }
 
     /**
@@ -49,12 +49,12 @@ public class IndexController {
      * 和页数索引和数据展示量
      * 获取文章
      */
-    @GetMapping("/search/{userId}")
-    public Result<List<Article>> searchArticles(@PathVariable("userId") Integer userId,
+    @GetMapping("/search/")
+    public Result<List<Article>> searchArticles(
                                                 @RequestParam(required = false, defaultValue = "") String keyword,
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageIndex,
                                                 @RequestParam(required = false, defaultValue = "10") Integer pageSize) {
         Integer startIndex = (pageIndex - 1) * pageSize;
-        return Result.success(articleService.searchArticles(userId, keyword, startIndex, pageSize));
+        return Result.success(articleService.searchArticles( keyword, startIndex, pageSize));
     }
 }
