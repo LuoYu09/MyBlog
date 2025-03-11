@@ -51,4 +51,19 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> getArticlesByCateIdList(List<Integer> cateIdList,Integer startIndex, Integer pageSize) {
         return articleMapper.getArticlesByCateIdList(cateIdList,startIndex,pageSize);
     }
+
+    @Override
+    public List<Article> getArticlesByUserId(Integer userId, Integer startIndex, Integer pageSize) {
+        return articleMapper.getArticlesByUserId(userId,startIndex,pageSize);
+    }
+
+    @Override
+    public Integer getUserArticleCount(Integer userId) {
+        return articleMapper.getUserArticleCount(userId);
+    }
+
+    @Override
+    public List<Article> searchArticles(Integer userId, String keyword, Integer startIndex, Integer pageSize) {
+        return articleMapper.searchArticles(userId,keyword,startIndex,pageSize);
+    }
 }

@@ -16,6 +16,15 @@
         limit #{startIndex},#{pageSize}
         order by article_view_count desc
     </select>
+    <select id="getArticlesByUserId" resultType="com.blog.myblog.entity.Article">
+        select * from article where article_user_id = #{userId} limit #{startIndex},#{pageSize}
+    </select>
+    <select id="getUserArticleCount" resultType="java.lang.Integer">
+        select count(*) from article where article_user_id = #{userId}
+    </select>
+    <select id="searchArticles" resultType="com.blog.myblog.entity.Article">
+        select * from article where article_title like concat('%',#{keyword},'%') and article_user_id = #{userId} limit #{startIndex},#{pageSize}
+    </select>
 
     <update id="increaseLikeCount">
         update article set article_like_count = article_like_count+1 where article_id = #{id}

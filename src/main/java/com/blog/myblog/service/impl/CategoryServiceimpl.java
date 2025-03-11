@@ -1,5 +1,6 @@
 package com.blog.myblog.service.impl;
 
+import com.blog.myblog.entity.Category;
 import com.blog.myblog.mapper.ArticleMapper;
 import com.blog.myblog.mapper.CategoryMapper;
 import com.blog.myblog.service.CategoryService;
@@ -19,5 +20,10 @@ public class CategoryServiceimpl implements CategoryService {
     @Override
     public List<Integer> getArticleIdByCateId(Integer cateId) {
         return categoryMapper.getArticleIdByCateId(cateId);
+    }
+
+    @Override
+    public List<Category> getAllCate() {
+        return categoryMapper.getAllCate();
     }
 }

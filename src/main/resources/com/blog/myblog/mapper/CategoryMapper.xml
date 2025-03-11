@@ -8,4 +8,8 @@
         select article_id from article_category_ref where category_id = #{cateId}
     </select>
 
+    <select id="getAllCate" resultType="com.blog.myblog.entity.Category">
+        select * from category
+    </select>
+
 </mapper>

@@ -1,6 +1,7 @@
 package com.blog.myblog.controller.home;
 
 import com.blog.myblog.entity.Article;
+import com.blog.myblog.entity.Category;
 import com.blog.myblog.result.Result;
 import com.blog.myblog.service.ArticleService;
 import com.blog.myblog.service.CategoryService;
@@ -38,5 +39,13 @@ public class CategoryController {
         return Result.success(articleList);
     }
 
-
+    /**
+     * 获取所有分类
+     * @return 分类列表
+     */
+    @GetMapping("/getAllCate")
+    public Result<List<Category>> getAllCate() {
+        List<Category> cateList = categoryService.getAllCate();
+        return Result.success(cateList);
+    }
 }
