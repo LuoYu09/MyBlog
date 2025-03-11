@@ -30,10 +30,7 @@ public class IndexController {
     private UserService userService;
 
     /**
-     * 首页，
-     * 根据用户id
-     * 和页数索引和数据展示量
-     * 获取文章
+     * 首页，根据页数索引和数据展示量获取文章
      */
     @GetMapping("/getPage")
     public Result<List<Article>> getPageByIndex(
@@ -45,9 +42,7 @@ public class IndexController {
 
     /**
      *
-     * 根据关键词和用户id
-     * 和页数索引和数据展示量
-     * 获取文章
+     * 根据关键词和页数索引和数据展示量获取文章
      */
     @GetMapping("/search/")
     public Result<List<Article>> searchArticles(
