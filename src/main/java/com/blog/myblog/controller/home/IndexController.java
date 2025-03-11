@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/home/index")
 public class IndexController {
     @Autowired
     private ArticleService articleService;
