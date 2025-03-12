@@ -35,5 +35,3 @@ myblog:
     admin-ttl: 72000000
     # 设置前端传递过来的令牌名称
     admin-token-name: token
-
-
