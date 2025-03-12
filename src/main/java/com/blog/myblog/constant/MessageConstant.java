@@ -10,4 +10,6 @@ public class MessageConstant {
     public final static String AlREADY_EXISTS = "已存在";
 
     public final static String UNKNOWN_ERROR = "未知错误";
+
+    public static final String UPLOAD_FAILED = "文件上传失败";
 }
