@@ -2,6 +2,8 @@ package com.blog.myblog.DTO;
 
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 前端传递的文章数据模型
  */
@@ -19,11 +21,8 @@ public class ArticleDTO {
     //文章内容
     private String articleContent;
 
-    //文章一级分类
-    private Integer articleParentCategoryId;
-
-    //文章二级分类
-    private Integer articleChildCategoryId;
+    //文章分类
+    private List<Integer> categoryId;
 
     //文章状态
     private Integer articleStatus;

@@ -11,4 +11,5 @@ public interface CategoryMapper {
     List<Integer> getArticleIdByCateId(Integer cateId);
 
     List<Category> getAllCate();
+
 }

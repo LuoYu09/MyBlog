@@ -22,11 +22,11 @@ public interface ArticleMapper {
 
     List<Article> getArticlesByCateIdList(List<Integer> cateIdList,Integer startIndex, Integer pageSize);
 
-    List<Article> getArticlesByUserId(Integer userId, Integer startIndex, Integer pageSize);
+    List<Article> getArticlesByUserId(Integer startIndex, Integer pageSize);
 
-    Integer getUserArticleCount(Integer userId);
+    Integer getUserArticleCount();
 
-    List<Article> searchArticles(Integer userId, String keyword, Integer startIndex, Integer pageSize);
+    List<Article> searchArticles(String keyword, Integer startIndex, Integer pageSize);
 
     @Select("select * from article order by article_create_time desc limit #{limit}")
     List<Article> listRecentArticle(Integer limit);

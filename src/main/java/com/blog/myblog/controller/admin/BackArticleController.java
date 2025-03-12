@@ -4,7 +4,6 @@ import com.blog.myblog.DTO.ArticleDTO;
 import com.blog.myblog.DTO.PageQueryDTO;
 import com.blog.myblog.entity.Article;
 import com.blog.myblog.entity.Category;
-import com.blog.myblog.mapper.CategoryMapper;
 import com.blog.myblog.result.PageResult;
 import com.blog.myblog.result.Result;
 import com.blog.myblog.service.BackArticleService;
@@ -71,6 +70,10 @@ public class BackArticleController {
      */
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id){
+        log.info("根据ID删除文章:{}",id);
+
+        backArticleService.deleteById(id);
+
         return Result.success();
     }
 
@@ -81,7 +84,11 @@ public class BackArticleController {
      */
     @GetMapping("/{id}")
     public Result<Article> selectById(@PathVariable Integer id){
-        return Result.success();
+        log.info("根据ID查询文章:{}",id);
+
+        Article article = backArticleService.selectById(id);
+
+        return Result.success(article);
     }
 
     /**
@@ -91,6 +98,10 @@ public class BackArticleController {
      */
     @PutMapping
     public Result updateArticle(@RequestBody ArticleDTO dto){
+        log.info("编辑文章:{}",dto.getArticleId());
+
+        backArticleService.updateArticle(dto);
+
         return Result.success();
     }
 }

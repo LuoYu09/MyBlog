@@ -3,6 +3,7 @@ package com.blog.myblog.entity;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -26,9 +27,9 @@ public class Article implements Serializable {
 
     private Integer articleLikeCount;   //文章点赞数
 
-    private Date articleCreateTime;  //文章创建时间
+    private LocalDateTime articleCreateTime;  //文章创建时间
 
-    private Date articleUpdateTime;  //最新修改时间
+    private LocalDateTime articleUpdateTime;  //最新修改时间
 
     private Integer articleIsComment;  //是否允许评论，1允许，0不允许
 

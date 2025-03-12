@@ -2,6 +2,7 @@ package com.blog.myblog.service.impl;
 
 import com.blog.myblog.DTO.ArticleDTO;
 import com.blog.myblog.DTO.PageQueryDTO;
+import com.blog.myblog.context.BaseContext;
 import com.blog.myblog.entity.Article;
 import com.blog.myblog.entity.Category;
 import com.blog.myblog.mapper.BackArticleMapper;
@@ -10,16 +11,16 @@ import com.blog.myblog.result.PageResult;
 import com.blog.myblog.service.BackArticleService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
 public class BackArticleServiceImpl implements BackArticleService {
-    private static final Logger log = LoggerFactory.getLogger(BackArticleServiceImpl.class);
     @Autowired
     private BackArticleMapper backArticleMapper;
 
@@ -35,7 +36,7 @@ public class BackArticleServiceImpl implements BackArticleService {
     public PageResult pageQuery(PageQueryDTO dto) {
         PageHelper.startPage(dto.getPage(),dto.getPageSize());
 
-        Page<Article> page = backArticleMapper.pageQuery();
+        Page<Article> page = backArticleMapper.pageQuery(dto);
 
         PageResult result = new PageResult();
 
@@ -59,7 +60,74 @@ public class BackArticleServiceImpl implements BackArticleService {
      * @param dto
      */
     @Override
+    @Transactional
     public void add(ArticleDTO dto) {
-        //categoryMapper.add();
+        Article article = new Article();
+
+        BeanUtils.copyProperties(dto,article);
+
+        article.setArticleUserId(BaseContext.getCurrentId());
+        article.setArticleStatus(0);
+        article.setArticleLikeCount(0);
+        article.setArticleCommentCount(0);
+        article.setArticleViewCount(0);
+        article.setArticleCreateTime(LocalDateTime.now());
+        article.setArticleUpdateTime(LocalDateTime.now());
+
+        backArticleMapper.add(article);
+
+        Integer articleId = article.getArticleId();
+
+        backArticleMapper.addRef(dto.getCategoryId(), articleId);
+    }
+
+    /**
+     * 根据ID删除文章
+     * @param id
+     */
+    @Override
+    @Transactional
+    public void deleteById(Integer id) {
+        backArticleMapper.deleteById(id);
+
+        backArticleMapper.deleteRef(id);
+    }
+
+    /**
+     * 根据ID查询文章
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    @Transactional
+    public Article selectById(Integer id) {
+        Article article = backArticleMapper.selectById(id);
+
+        List<Category> categories = backArticleMapper.selectRefCategory(id);
+
+        article.setCategoryList(categories);
+
+        return article;
+    }
+
+    /**
+     * 编辑文章
+     * @param dto
+     */
+    @Override
+    @Transactional
+    public void updateArticle(ArticleDTO dto) {
+        Article article = new Article();
+
+        BeanUtils.copyProperties(dto,article);
+
+        article.setArticleUpdateTime(LocalDateTime.now());
+
+        backArticleMapper.update(article);
+
+        backArticleMapper.deleteRef(dto.getArticleId());
+
+        backArticleMapper.addRef(dto.getCategoryId(),dto.getArticleId());
     }
 }
