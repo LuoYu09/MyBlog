@@ -46,7 +46,7 @@ public class IndexController {
      * 根据关键词和页数索引和数据展示量获取文章
      */
 
-    @GetMapping("/search/")
+    @GetMapping("/search")
     public Result<List<Article>> searchArticles(
                                                 @RequestParam(required = false, defaultValue = "") String keyword,
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageIndex,
