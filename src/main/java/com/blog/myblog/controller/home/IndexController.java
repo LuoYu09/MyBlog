@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Slf4j
 @RestController
-@RequestMapping("/home")
+@RequestMapping("/home/index")
 public class IndexController {
     @Autowired
     private ArticleService articleService;
@@ -32,6 +32,7 @@ public class IndexController {
     /**
      * 首页，根据页数索引和数据展示量获取文章
      */
+
     @GetMapping("/getPage")
     public Result<List<Article>> getPageByIndex(
                                                 @RequestParam(required = false, defaultValue = "1") Integer pageIndex,
@@ -44,6 +45,7 @@ public class IndexController {
      *
      * 根据关键词和页数索引和数据展示量获取文章
      */
+
     @GetMapping("/search/")
     public Result<List<Article>> searchArticles(
                                                 @RequestParam(required = false, defaultValue = "") String keyword,
