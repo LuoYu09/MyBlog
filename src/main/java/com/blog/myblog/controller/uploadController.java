@@ -24,6 +24,7 @@ public class uploadController{
      * @param image
      * @return
     * */
+
     @PostMapping("/uploadImage")
     public Result<String> image(MultipartFile image) throws IOException {
         log.info("imageName为:{}",image.getOriginalFilename());
