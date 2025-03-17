@@ -11,4 +11,6 @@ public interface UserMapper {
     User getUserById(Integer userId);
 
     List<User> getAllUser();
+
+    void saveImage(String imageUrl,Integer userId);
 }

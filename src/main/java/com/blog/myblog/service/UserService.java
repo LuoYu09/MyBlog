@@ -8,4 +8,6 @@ public interface UserService {
     public User getUserById(Integer userId);
 
     List<User> getAllUser();
+
+    void saveImage(String imageUrl,Integer userId);
 }
