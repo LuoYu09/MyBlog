@@ -55,10 +55,10 @@ public class AdminServiceImpl  implements AdminService {
             throw new PasswordErrorException(MessageConstant.PASSWORD_WRONG);
         }
 
-        LoginVO loginVO = LoginVO.builder().id(user.getUserId()).userName(user.getUserName()).avatar(user.getUserAvatar()).build();
+        LoginVO loginVO = LoginVO.builder().id(user.getId()).userName(user.getUserName()).avatar(user.getUserAvatar()).build();
 
         Map<String, Object> map = new HashMap<>();
-        map.put(JwtClaimsConstant.USER_ID, user.getUserId());
+        map.put(JwtClaimsConstant.USER_ID, user.getId());
 
         loginVO.setToken(JwtUtil.createJWT(jwtProperties.getAdminSecretKey(), jwtProperties.getAdminTtl(), map));
 
@@ -106,7 +106,7 @@ public class AdminServiceImpl  implements AdminService {
 
         BeanUtils.copyProperties(dto,user);
 
-        user.setUserId(BaseContext.getCurrentId());
+        user.setId(BaseContext.getCurrentId());
 
         adminMapper.update(user);
     }

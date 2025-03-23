@@ -13,22 +13,22 @@
             <if test="userPass != null">
                 user_pass = #{userPass},
             </if>
-            <if test="userNickname != null">
-                user_nickname = #{userNickname},
+            <if test="email != null">
+                email = #{email},
             </if>
-            <if test="userEmail != null">
-                user_email = #{userEmail},
-            </if>
-            <if test="userUrl != null">
-                user_url = #{userUrl},
+            <if test="imageUrl != null">
+                image_url = #{imageUrl},
             </if>
             <if test="userAvatar != null">
                 user_avatar = #{userAvatar},
+            </if>
+            <if test="sign != null">
+                sign = #{sign},
             </if>
             <if test="userLastLoginTime!= null">
                 user_last_login_time = #{userLastLoginTime},
             </if>
         </set>
-        where user_id = #{userId}
+        where id = #{userId}
     </update>
 </mapper>

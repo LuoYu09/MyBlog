@@ -28,5 +28,5 @@ public class ArticleDTO {
     private Integer articleStatus;
 
     //文章封面图
-    private String articleThumbnail;
+    private String articleImage;
 }

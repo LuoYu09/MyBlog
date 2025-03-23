@@ -29,6 +29,8 @@ public class Article implements Serializable {
 
     private LocalDateTime articleCreateTime;  //文章创建时间
 
+    private LocalDateTime articleUploadTime;  //文章上传时间
+
     private LocalDateTime articleUpdateTime;  //最新修改时间
 
     private Integer articleIsComment;  //是否允许评论，1允许，0不允许
@@ -39,7 +41,7 @@ public class Article implements Serializable {
 
     private String articleSummary;  //摘要
 
-    private String articleThumbnail;  //封面图片
+    private String articleImage;  //封面图片
 
     private List<Category> categoryList;  //文章分类
 

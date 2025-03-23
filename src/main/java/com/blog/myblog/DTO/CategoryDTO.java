@@ -19,7 +19,4 @@ public class CategoryDTO {
 
     //分类描述
     private String categoryDescription;
-
-    //分类图标
-    private String categoryIcon;
 }

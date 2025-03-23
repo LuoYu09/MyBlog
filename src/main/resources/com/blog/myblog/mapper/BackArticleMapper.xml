@@ -5,10 +5,10 @@
 <mapper namespace="com.blog.myblog.mapper.BackArticleMapper">
     <insert id="add" useGeneratedKeys="true" keyProperty="articleId">
         insert into article (article_user_id, article_title, article_content, article_view_count, article_comment_count, article_like_count,
-                             article_is_comment, article_status, article_update_time, article_create_time, article_summary, article_thumbnail)
+                             article_is_comment, article_status, article_update_time, article_create_time, article_summary, article_image)
         values
                             (#{articleUserId},#{articleTitle},#{articleContent},#{articleViewCount},#{articleCommentCount},#{articleLikeCount},
-                             #{articleIsComment},#{articleStatus},#{articleUpdateTime},#{articleCreateTime},#{articleSummary},#{articleThumbnail})
+                             #{articleIsComment},#{articleStatus},#{articleUpdateTime},#{articleCreateTime},#{articleSummary},#{articleImage})
     </insert>
 
     <insert id="addRef">
@@ -42,8 +42,8 @@
             <if test="articleSummary != null">
                 article_summary = #{articleSummary},
             </if>
-            <if test="articleThumbnail != null">
-                article_thumbnail = #{articleThumbnail},
+            <if test="articleImage != null">
+                article_image = #{articleImage},
             </if>
             <if test="articleUpdateTime != null">
                 article_update_time = #{articleUpdateTime},

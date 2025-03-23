@@ -23,8 +23,6 @@ public class Category implements Serializable {
 
     private String categoryDescription; //分类描述
 
-    private String categoryIcon;    //分类图标
-
     /**
      * 文章数量(非数据库字段)
      */

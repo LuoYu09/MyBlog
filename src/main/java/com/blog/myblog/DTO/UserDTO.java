@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 public class UserDTO implements Serializable {
     //用户ID
-    private Integer userId;
+    private Integer id;
 
     //用户姓名
     private String userName;
@@ -19,14 +19,17 @@ public class UserDTO implements Serializable {
     //密码
     private String userPass;
 
-    //昵称
-    private String userNickname;
-
     //邮箱
-    private String userEmail;
+    private String email;
+
+    //个性签名
+    private String sign;
+
+    //用户角色
+    private int userRole;
 
     //个人网址
-    private String userUrl;
+    private String imageUrl;
 
     //头像
     private String userAvatar;

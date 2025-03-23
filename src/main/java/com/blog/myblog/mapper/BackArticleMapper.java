@@ -28,9 +28,9 @@ public interface BackArticleMapper {
 
     void update(Article article);
 
-    @Delete("delete from article_category_ref where article_id = #{id}")
+    @Delete("delete from article_category where article_id = #{id}")
     void deleteRef(Integer id);
 
-    @Select("select * from category left join article_category_ref on category.category_id = article_category_ref.category_id where article_id = #{id}")
+    @Select("select * from category left join article_category on category.category_id = article_category.category_id where article_id = #{id}")
     List<Category> selectRefCategory(Integer id);
 }

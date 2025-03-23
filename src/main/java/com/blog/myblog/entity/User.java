@@ -11,17 +11,19 @@ import java.util.Date;
 @Data
 public class User implements Serializable{
     private static final long serialVersionUID = -4415517704211731385L;
-    private Integer userId;
+    private Integer id;
 
     private String userName;
 
     private String userPass;
 
-    private String userNickname;
+    private int userRole;
 
-    private String userEmail;
+    private String sign;
 
-    private String userUrl;
+    private String imageUrl;
+
+    private String email;
 
     private String userAvatar;
 

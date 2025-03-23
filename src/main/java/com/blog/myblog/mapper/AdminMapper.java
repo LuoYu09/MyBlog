@@ -16,11 +16,11 @@ public interface AdminMapper {
     @Select("select * from user where user_name = #{username}")
     User login(LoginDTO dto);
 
-    @Insert("insert into user (user_name, user_pass, user_nickname, user_email, user_register_time, user_last_login_time) values " +
-            "(#{userName},#{password},#{Nickname},#{email},NOW(),NOW())")
+    @Insert("insert into user (user_name, user_pass, user_avatar, user_role, user_register_time, user_last_login_time) values " +
+            "(#{userName},#{password},#{userAvatar}, 1, NOW(),NOW())")
     void register(RegisterDTO dto);
 
-    @Select("select * from user where user_id = #{id}")
+    @Select("select * from user where id = #{id}")
     User selectUser(Integer id);
 
     void update(User user);

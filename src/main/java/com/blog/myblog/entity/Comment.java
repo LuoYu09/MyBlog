@@ -3,48 +3,30 @@ package com.blog.myblog.entity;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class Comment implements Serializable {
 
     private static final long serialVersionUID = -1038897351672911219L;
-    private Integer commentId;
 
-    private Integer commentPid;
+    private Integer id;
 
-    private String commentPname;
+    private Integer user_id;
 
-    private Integer commentArticleId;
+    private Integer parentArticleId;
 
-    private String commentAuthorName;
+    private Integer parentUserId;
 
-    private String commentAuthorEmail;
+    private String userName;
 
-    private String commentAuthorUrl;
+    private String userAvatar;
 
-    private String commentAuthorAvatar;
+    private String content;
 
-    private String commentContent;
+    private LocalDateTime createTime;
 
-    private String commentAgent;
-
-    private String commentIp;
-
-    private Date commentCreateTime;
-
-    /**
-     * 角色(管理员1，访客0)
-     */
-    private Integer commentRole;
-
-    /**
-     * 评论用户ID
-     */
-    private Integer commentUserId;
-
-    /**
-     * 非数据库字段
-     */
-    private Article article;
+    private List<Comment> subComments;
 }

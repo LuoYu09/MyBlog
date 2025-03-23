@@ -16,9 +16,6 @@
             <if test="categoryDescription != null">
                 category_description = #{categoryDescription},
             </if>
-            <if test="categoryIcon != null">
-                category_icon = #{categoryIcon},
-            </if>
         </set>
         where category_id = #{categoryId}
     </update>
