@@ -14,7 +14,7 @@ public class Comment implements Serializable {
 
     private Integer id;
 
-    private Integer user_id;
+    private Integer userId;
 
     private Integer parentArticleId;
 
