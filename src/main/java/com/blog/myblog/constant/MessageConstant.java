@@ -12,4 +12,6 @@ public class MessageConstant {
     public final static String UNKNOWN_ERROR = "未知错误";
 
     public static final String UPLOAD_FAILED = "文件上传失败";
+
+    public static final String CHAR_EXCEED_LIMIT = "字符数量超出限制！";
 }

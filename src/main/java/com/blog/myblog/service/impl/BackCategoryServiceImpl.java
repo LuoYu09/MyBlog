@@ -3,6 +3,7 @@ package com.blog.myblog.service.impl;
 import com.blog.myblog.DTO.CategoryDTO;
 import com.blog.myblog.constant.MessageConstant;
 import com.blog.myblog.entity.Category;
+import com.blog.myblog.exception.CharCountException;
 import com.blog.myblog.exception.DeletionNotAllowedException;
 import com.blog.myblog.mapper.BackCategoryMapper;
 import com.blog.myblog.service.BackCategoryService;
@@ -39,6 +40,10 @@ public class BackCategoryServiceImpl implements BackCategoryService {
      */
     @Override
     public void add(CategoryDTO dto) {
+        if(dto.getCategoryName().length() > 20){
+            throw new CharCountException(MessageConstant.CHAR_EXCEED_LIMIT);
+        }
+
         backCategoryMapper.add(dto);
     }
 
@@ -72,6 +77,10 @@ public class BackCategoryServiceImpl implements BackCategoryService {
      */
     @Override
     public void update(CategoryDTO dto) {
+        if(dto.getCategoryName() != null && dto.getCategoryName().length() > 20){
+            throw new CharCountException(MessageConstant.CHAR_EXCEED_LIMIT);
+        }
+
         backCategoryMapper.update(dto);
     }
 }

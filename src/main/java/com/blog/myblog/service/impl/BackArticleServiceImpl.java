@@ -2,9 +2,11 @@ package com.blog.myblog.service.impl;
 
 import com.blog.myblog.DTO.ArticleDTO;
 import com.blog.myblog.DTO.PageQueryDTO;
+import com.blog.myblog.constant.MessageConstant;
 import com.blog.myblog.context.BaseContext;
 import com.blog.myblog.entity.Article;
 import com.blog.myblog.entity.Category;
+import com.blog.myblog.exception.CharCountException;
 import com.blog.myblog.mapper.BackArticleMapper;
 import com.blog.myblog.mapper.CategoryMapper;
 import com.blog.myblog.result.PageResult;
@@ -62,6 +64,10 @@ public class BackArticleServiceImpl implements BackArticleService {
     @Override
     @Transactional
     public void add(ArticleDTO dto) {
+        if(dto.getArticleTitle().length() > 100 || (dto.getArticleSummary() != null && dto.getArticleSummary().length() > 250)){
+            throw new CharCountException(MessageConstant.CHAR_EXCEED_LIMIT);
+        }
+
         Article article = new Article();
 
         BeanUtils.copyProperties(dto,article);
@@ -118,6 +124,10 @@ public class BackArticleServiceImpl implements BackArticleService {
     @Override
     @Transactional
     public void updateArticle(ArticleDTO dto) {
+        if((dto.getArticleTitle() != null && dto.getArticleTitle().length() > 100) || (dto.getArticleSummary() != null && dto.getArticleSummary().length() > 250)){
+            throw new CharCountException(MessageConstant.CHAR_EXCEED_LIMIT);
+        }
+
         Article article = new Article();
 
         BeanUtils.copyProperties(dto,article);

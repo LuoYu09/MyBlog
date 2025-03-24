@@ -9,6 +9,7 @@ import com.blog.myblog.constant.MessageConstant;
 import com.blog.myblog.context.BaseContext;
 import com.blog.myblog.entity.Article;
 import com.blog.myblog.entity.User;
+import com.blog.myblog.exception.CharCountException;
 import com.blog.myblog.exception.PasswordErrorException;
 import com.blog.myblog.exception.UserIsLockedException;
 import com.blog.myblog.exception.UserNotFoundException;
@@ -75,6 +76,10 @@ public class AdminServiceImpl  implements AdminService {
      */
     @Override
     public void register(RegisterDTO dto) {
+        if(dto.getUserName().length() > 10 || dto.getPassword().length() > 100){
+            throw new CharCountException(MessageConstant.CHAR_EXCEED_LIMIT);
+        }
+
         adminMapper.register(dto);
     }
 
@@ -102,6 +107,10 @@ public class AdminServiceImpl  implements AdminService {
      */
     @Override
     public void update(UserDTO dto) {
+        if((dto.getUserName() != null && dto.getUserName().length() > 10) || (dto.getUserPass() != null && dto.getUserPass().length() > 100)){
+            throw new CharCountException(MessageConstant.CHAR_EXCEED_LIMIT);
+        }
+
         User user = new User();
 
         BeanUtils.copyProperties(dto,user);
