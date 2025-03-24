@@ -1,6 +1,8 @@
 package com.blog.myblog.service.impl;
 
+import com.blog.myblog.constant.MessageConstant;
 import com.blog.myblog.entity.Article;
+import com.blog.myblog.exception.ArticleException;
 import com.blog.myblog.mapper.ArticleMapper;
 import com.blog.myblog.service.ArticleService;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +26,11 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public Article getArticleById(Integer id) {
-        return articleMapper.getArticleById(id);
+        Article article = articleMapper.getArticleById(id);
+        if (article == null) {
+            throw new ArticleException(MessageConstant.ARTICLE_NOT_EXISTS);
+        }
+        return article;
     }
     /**
      * 文章的点赞增加

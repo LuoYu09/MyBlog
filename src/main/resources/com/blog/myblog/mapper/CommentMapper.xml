@@ -3,8 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.blog.myblog.mapper.CommentMapper">
+    <insert id="saveComment">
+        insert into comment(user_id, content, parent_article_id, parent_comment_id, create_time, user_name, user_avatar, parent_article_title) VALUES
+        (#{userId}, #{content}, #{parentArticleId}, #{parentCommentId}, #{createTime}, #{userName}, #{userAvatar}, #{parentArticleTitle})
+    </insert>
 
     <select id="getCommentByArticleId" resultType="com.blog.myblog.entity.Comment">
-        select * from comment where comment_article_id = #{articleId} order by comment_create_time desc
+        select * from comment where parent_article_id = #{articleId} order by create_time desc
     </select>
 </mapper>

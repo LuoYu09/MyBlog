@@ -25,11 +25,7 @@ public class ArticleController {
     @GetMapping(value = "/{articleId}")
     public Result<Article> article(@PathVariable("articleId") Integer articleId) {
         log.info("显示第{}篇文章",articleId);
-        //获取文章信息
         Article article = articleService.getArticleById(articleId);
-        if (article==null){
-            return Result.error("文章不存在");
-        }
         return Result.success(article);
     }
 

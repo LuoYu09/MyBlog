@@ -12,23 +12,23 @@ public class Comment implements Serializable {
 
     private static final long serialVersionUID = -1038897351672911219L;
 
-    private Integer id;
+    private Integer id; // 评论ID
 
-    private Integer userId;
+    private Integer userId; // 用户ID
 
-    private Integer parentArticleId;
+    private Integer parentArticleId; // 父评论文章ID
 
-    private Integer parentCommentId;
+    private Integer parentCommentId; // 父评论ID
 
-    private String userName;
+    private String userName; // 用户名
 
-    private String userAvatar;
+    private String userAvatar;  // 用户头像
 
-    private String parentArticleTitle;
+    private String parentArticleTitle;  // 父评论文章标题
 
-    private String content;
+    private String content; // 评论内容
 
-    private LocalDateTime createTime;
+    private LocalDateTime createTime; // 创建时间
 
-    private List<Comment> subComments;
+    private List<Comment> subComments;  // 子评论
 }

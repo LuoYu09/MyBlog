@@ -5,7 +5,7 @@
 <mapper namespace="com.blog.myblog.mapper.CategoryMapper">
 
     <select id="getArticleIdByCateId" resultType="integer">
-        select article_id from article_category_ref where category_id = #{cateId}
+        select article_id from article_category where category_id = #{cateId}
     </select>
 
     <select id="getAllCate" resultType="com.blog.myblog.entity.Category">

@@ -6,6 +6,7 @@ import com.blog.myblog.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -17,5 +18,11 @@ public class CommenttServiceImpl implements CommentService {
     @Override
     public List<Comment> getCommentByArticleId(Integer articleId) {
         return commentMapper.getCommentByArticleId(articleId);
+    }
+
+    @Override
+    public void saveComment(Comment comment) {
+        comment.setCreateTime(LocalDateTime.now());
+        commentMapper.saveComment(comment);
     }
 }
