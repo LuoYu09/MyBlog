@@ -18,11 +18,13 @@ public class Comment implements Serializable {
 
     private Integer parentArticleId;
 
-    private Integer parentUserId;
+    private Integer parentCommentId;
 
     private String userName;
 
     private String userAvatar;
+
+    private String parentArticleTitle;
 
     private String content;
 

@@ -3,6 +3,7 @@ package com.blog.myblog.entity;
 import lombok.Data;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -10,7 +11,9 @@ import java.util.Date;
 
 @Data
 public class User implements Serializable{
+    @Serial
     private static final long serialVersionUID = -4415517704211731385L;
+
     private Integer id;
 
     private String userName;

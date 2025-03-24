@@ -29,6 +29,6 @@
                 user_last_login_time = #{userLastLoginTime},
             </if>
         </set>
-        where id = #{userId}
+        where id = #{id}
     </update>
 </mapper>
