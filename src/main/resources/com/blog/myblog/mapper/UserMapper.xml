@@ -6,6 +6,9 @@
     <update id="saveImage">
         update user set image_url= #{imageUrl} where id= #{userId}
     </update>
+    <update id="setSign">
+        update user set sign = #{sign} where id = #{id}
+    </update>
 
     <select id="getUserById" resultType="com.blog.myblog.entity.User">
         select * from user where id = #{userId}

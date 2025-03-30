@@ -16,13 +16,13 @@ public class CommenttServiceImpl implements CommentService {
     private CommentMapper commentMapper;
 
     @Override
-    public List<Comment> getCommentByArticleId(Integer articleId) {
-        return commentMapper.getCommentByArticleId(articleId);
-    }
-
-    @Override
     public void saveComment(Comment comment) {
         comment.setCreateTime(LocalDateTime.now());
         commentMapper.saveComment(comment);
+    }
+
+    @Override
+    public List<Comment> getCommentsByArticleId(Integer articleId) {
+        return commentMapper.getCommentByArticleId(articleId);
     }
 }

@@ -10,4 +10,6 @@ public interface UserService {
     List<User> getAllUser();
 
     void saveImage(String imageUrl,Integer userId);
+
+    void setSign(Integer id, String sign);
 }

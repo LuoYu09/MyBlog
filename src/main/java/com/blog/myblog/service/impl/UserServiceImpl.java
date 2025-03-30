@@ -28,4 +28,9 @@ public class UserServiceImpl implements UserService {
     public void saveImage(String imageUrl,Integer userId) {
         userMapper.saveImage(imageUrl,userId);
     }
+
+    @Override
+    public void setSign(Integer id,String sign) {
+        userMapper.setSign(id,sign);
+    }
 }

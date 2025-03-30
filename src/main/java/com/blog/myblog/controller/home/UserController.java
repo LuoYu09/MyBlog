@@ -5,10 +5,7 @@ import com.blog.myblog.result.Result;
 import com.blog.myblog.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -40,5 +37,16 @@ public class UserController {
         log.info("查询所有用户");
         List<User> userList = userService.getAllUser();
         return Result.success(userList);
+    }
+
+    /**
+     * 传入用户id和要添加的签名内容
+     * 添加用户签名
+     * */
+    @PostMapping("/sign/{id}")
+    public Result setSign(@PathVariable Integer id,String sign){
+    log.info("添加用户签名:{}",sign);
+    userService.setSign(id,sign);
+    return Result.success();
     }
 }

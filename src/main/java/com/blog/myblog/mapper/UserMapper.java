@@ -13,4 +13,6 @@ public interface UserMapper {
     List<User> getAllUser();
 
     void saveImage(String imageUrl,Integer userId);
+
+    void setSign(Integer id,String sign);
 }

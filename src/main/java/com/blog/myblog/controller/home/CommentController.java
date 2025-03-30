@@ -32,6 +32,18 @@ public class CommentController {
     public Result saveComment(@RequestBody Comment comment){
         log.info("保存评论,{}",comment);
         commentService.saveComment(comment);
-        return Result.success();    }
+        return Result.success();
+    }
+
+
+    /**
+     * 显示评论
+     * */
+    @GetMapping("/{articleId}")
+    public Result<List<Comment>> getCommentsByArticleId(@PathVariable("articleId") Integer articleId){
+        log.info("显示评论,{}",articleId);
+        List<Comment> commentList=commentService.getCommentsByArticleId(articleId);
+        return Result.success(commentList);
+    }
 }
 
